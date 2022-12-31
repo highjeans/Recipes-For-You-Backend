@@ -1,8 +1,8 @@
 const http = require("http");
+const {requests} = require("./requests");
+
 const server = http.createServer((request, response) => {
-    response.writeHead(200, { "Content-Type": "text/plain" });
-    response.write("Hello World!");
-    response.end();
+    requests(request, response);
 });
 
 server.listen(8080, () => {
