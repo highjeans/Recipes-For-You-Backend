@@ -2,7 +2,8 @@ const {getRecipe, getRecipes, getCard} = require("./handlers");
 
 
 const requests = async (request, response) => {
-    const url = request.url;
+    const fullUrl = request.url;
+    const url = request.url.substring(0, fullUrl.indexOf('?'));
 
     switch (url) {
         case "/recipe":

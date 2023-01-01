@@ -11,8 +11,18 @@ function parseData(chunks) {
     return body;
 }
 
-const getRecipes = async (request, response) => {
+function getBody(request) {
+    return (new URL("http://test.com" + request.url)).searchParams.toString();
+}
 
+const getRecipes = async (request, response) => {
+    const body = getBody(request);
+    const json = await fetch("https://api.spoonacular.com/recipes/complexSearch" + apikeyString + "&" + body);
+    const text = await json.text();
+
+    response.writeHead(200, {"Content-Type": "application/json"});
+    response.write(text);
+    response.end();
 };
 
 const getRecipe = async (request, response) => {
