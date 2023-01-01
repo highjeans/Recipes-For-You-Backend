@@ -1,18 +1,18 @@
 const {getRecipe, getRecipes, getCard} = require("./handlers");
 
 
-const requests = (request, response) => {
+const requests = async (request, response) => {
     const url = request.url;
 
     switch (url) {
-        case "recipe":
-            getRecipe(request, response);
+        case "/recipe":
+            await getRecipe(request, response);
             break;
-        case "recipes":
-            getRecipes(request, response);
+        case "/recipes":
+            await getRecipes(request, response);
             break;
-        case "card":
-            getCard(request, response);
+        case "/card":
+            await getCard(request, response);
             break;
     }
 };

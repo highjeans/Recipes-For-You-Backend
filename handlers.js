@@ -11,11 +11,11 @@ function parseData(chunks) {
     return body;
 }
 
-const getRecipes = (request, response) => {
+const getRecipes = async (request, response) => {
 
 };
 
-const getRecipe = (request, response) => {
+const getRecipe = async (request, response) => {
 
 };
 

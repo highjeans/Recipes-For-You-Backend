@@ -1,8 +1,8 @@
 const http = require("http");
 const {requests} = require("./requests");
 
-const server = http.createServer((request, response) => {
-    requests(request, response);
+const server = http.createServer(async (request, response) => {
+    await requests(request, response);
 });
 
 server.listen(8080, () => {
