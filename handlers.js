@@ -26,7 +26,13 @@ const getRecipes = async (request, response) => {
 };
 
 const getRecipe = async (request, response) => {
+    const id = parseData(getBody(request))["id"];
+    const card = await fetch(`https://api.spoonacular.com/recipes/${id}/information` + apikeyString);
+    const json = await card.text();
 
+    response.writeHead(200, {"Content-Type": "application/json"});
+    response.write(json);
+    response.end();
 };
 
 const getCard = async (request, response) => {
